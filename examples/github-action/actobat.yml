@@ -1,0 +1,15 @@
+---
+package_name: actobatexample
+author: Gepeto
+generator:
+  component: github-action
+  inputs:
+    project_id: actobatexample
+    project_name: ActobatExample
+    project_desc: A sample GitHub Action built by Actobat
+    author_name: Gepeto
+    author_email: gepeto@example.com
+    author_url: https://example.com
+    github_id: gepeto
+    github_repo: actobatexample
+    github_token_prefix: STUDIO
