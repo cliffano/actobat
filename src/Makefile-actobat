@@ -164,6 +164,9 @@ update-partials: stage
 lint:
 	yamllint action.yml .github/workflows/*.yaml
 
+test:
+	echo "PLACEHOLDER"
+
 release-major:
 	rtk release --release-increment-type major
 
@@ -175,4 +178,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint release-major release-minor release-patch release
+.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test release-major release-minor release-patch release
