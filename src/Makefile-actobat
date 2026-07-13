@@ -175,4 +175,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint release-major release-minor release-patch release
+.PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint release-major release-minor release-patch release
