@@ -112,7 +112,7 @@ endef
 
 # CI target to be executed by CI/CD tool
 all: ci
-ci: clean deps lint
+ci: clean lint
 
 # Ensure stage directory exists
 stage:
@@ -128,6 +128,8 @@ rmdeps:
 deps:
 	python3 -m venv .venv
 	$(call python_venv,python3 -m pip install -r requirements.txt)
+	go install github.com/rhysd/actionlint/cmd/actionlint@lates
+	gh extension install nektos/gh-ac
 	$(call deps_extra)
 
 deps-upgrade:
@@ -154,7 +156,7 @@ update-to-version:
 # Update dotfiles using the generator-github-action
 $(eval $(call set_generator_vars,update-dotfiles,actobat))
 update-dotfiles: stage
-	$(call update_dotfiles_from_generator,github-action,.github/. .gitignore .rtk.json .yamllint)
+	$(call update_dotfiles_from_generator,github-action,.github/. .gitignore requirements.txt .rtk.json .yamllint)
 
 # Update partial snippets using the generator-github-action
 $(eval $(call set_generator_vars,update-partials,actobat))
@@ -162,10 +164,11 @@ update-partials: stage
 	$(call update_partials_from_generator,github-action,AVATAR BADGES)
 
 lint:
-	yamllint action.yml .github/workflows/*.yaml
+	yamllint action.yml .github/workflows/*.yaml > docs/lint/yamllint.txt
+	actionlint -shellcheck= .github/workflows/*.yaml
 
 test:
-	echo "PLACEHOLDER"
+	gh act -P ubuntu-24.04=catthehacker/ubuntu:act-latest -W tests/action-workflow.yaml > docs/test/act.txt
 
 release-major:
 	rtk release --release-increment-type major
