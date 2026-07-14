@@ -129,7 +129,7 @@ deps:
 	python3 -m venv .venv
 	$(call python_venv,python3 -m pip install -r requirements.txt)
 	go install github.com/rhysd/actionlint/cmd/actionlint@latest
-	gh extension install nektos/gh-ac
+	gh extension install nektos/gh-act
 	$(call deps_extra)
 
 deps-upgrade:
