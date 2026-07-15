@@ -164,10 +164,12 @@ update-partials: stage
 	$(call update_partials_from_generator,github-action,AVATAR BADGES)
 
 lint:
+	mkdir -p docs/lint/
 	yamllint action.yml .github/workflows/*.yaml > docs/lint/yamllint.txt
 	actionlint -shellcheck= .github/workflows/*.yaml
 
 test:
+	mkdir -p docs/test/
 	gh act -P ubuntu-24.04=catthehacker/ubuntu:act-latest -W tests/action-workflow.yaml > docs/test/act.txt
 
 release-major:
