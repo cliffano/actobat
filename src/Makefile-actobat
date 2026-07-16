@@ -112,7 +112,7 @@ endef
 
 # CI target to be executed by CI/CD tool
 all: ci
-ci: clean lint
+ci: clean lint test
 
 # Ensure stage directory exists
 stage:
@@ -120,7 +120,7 @@ stage:
 
 # Remove all temporary (staged, generated, cached) files
 clean:
-	rm -rf stage/ .venv/
+	rm -rf stage/
 
 rmdeps:
 	rm -rf .venv/
@@ -128,7 +128,6 @@ rmdeps:
 deps:
 	python3 -m venv .venv
 	$(call python_venv,python3 -m pip install -r requirements.txt)
-	go install github.com/rhysd/actionlint/cmd/actionlint@latest
 	gh extension install nektos/gh-act
 	$(call deps_extra)
 
@@ -165,12 +164,19 @@ update-partials: stage
 
 lint:
 	mkdir -p docs/lint/
-	yamllint action.yml .github/workflows/*.yaml > docs/lint/yamllint.txt
-	actionlint -shellcheck= .github/workflows/*.yaml
+	yamllint action.yml .github/workflows/*.yaml 2>&1 | tee docs/lint/yamllint.txt
+	$(call python_venv,actionlint -shellcheck= .github/workflows/*.yaml)
 
 test:
 	mkdir -p docs/test/
-	gh act -P ubuntu-24.04=catthehacker/ubuntu:act-latest -W tests/action-workflow.yaml > docs/test/act.txt
+	gh act -P ubuntu-24.04=catthehacker/ubuntu:act-latest -W tests/action-workflow.yaml 2>&1 | tee docs/test/act.txt
+
+test-examples:
+	mkdir -p stage/test-examples/
+	cd examples && \
+	for f in *.sh; do \
+	  bash -x "$$f"; \
+	done
 
 release-major:
 	rtk release --release-increment-type major

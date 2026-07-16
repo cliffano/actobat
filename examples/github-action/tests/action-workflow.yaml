@@ -1,4 +1,4 @@
-name: Test Local Action Outside Standard GitHub Workflows Directory
+name: Test Action Outside GitHub Workflows Directory
 on: [push]
 
 jobs:
@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v5
       - name: Test Action
         uses: ./
         with:
