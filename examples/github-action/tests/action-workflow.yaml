@@ -1,4 +1,4 @@
-name: Test Action Outside GitHub Workflows Directory
+name: Test Local Action Outside Standard GitHub Workflows Directory
 on: [push]
 
 jobs:
@@ -6,10 +6,22 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Test Action
         uses: ./
         with:
           github_token: "test-github-token"
           message: 'Hello World'
           push_changes: 'false'
+      - name: Transform message and show variants
+        id: message
+        uses: ./
+        with:
+          message: 'Hello World'
+      - name: Verify message outputs
+        shell: sh
+        run: |
+          test "${{ steps.message.outputs.original }}" = 'Hello World'
+          test "${{ steps.message.outputs.reverse }}" = 'dlroW olleH'
+          test "${{ steps.message.outputs.uppercase }}" = 'HELLO WORLD'
+          test "${{ steps.message.outputs.lowercase }}" = 'hello world'

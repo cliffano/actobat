@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Shift version setting to action.yml as custom property
+- Shift test verifications to test workflow
 
 ### Fixed
 - Fix example CI workflow to simply call ci target
+- Fix failing message outputs verification
 
 ## 0.10.0 - 2026-07-16
 ### Added
