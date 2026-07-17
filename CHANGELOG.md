@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add DEVELOPERS_GUIDE and BUILD_REPORTS markers
+
 ## 0.11.0 - 2026-07-17
 ### Changed
 - Shift version setting to action.yml as custom property
