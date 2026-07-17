@@ -2,6 +2,8 @@
 name: 'ActobatExample'
 description: |
   A sample GitHub Action built by Actobat
+# Custom version field
+version: 0.9.0-pre.0
 author: 'Gepeto'
 branding:
   icon: 'message-circle'
