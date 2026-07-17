@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add DEVELOPERS_GUIDE and BUILD_REPORTS markers
+- Add build reports publishing to CI workflow
 
 ## 0.11.0 - 2026-07-17
 ### Changed
