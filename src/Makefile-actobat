@@ -166,7 +166,8 @@ update-partials: stage
 
 lint:
 	mkdir -p docs/lint/
-	$(call python_venv,yamllint action.yml .github/workflows/*.yaml) 2>&1 | tee docs/lint/yamllint.txt
+	$(call python_venv,yamllint action.yml .github/workflows/*.yaml > docs/lint/yamllint.txt 2>&1)
+	@if [ ! -s docs/lint/yamllint.txt ]; then echo "yamllint: no issues found" > docs/lint/yamllint.txt; fi
 	$(call python_venv,actionlint -shellcheck= .github/workflows/*.yaml)
 
 test:
