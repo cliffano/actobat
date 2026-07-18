@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add DEVELOPERS_GUIDE and BUILD_REPORTS markers
 - Add build reports publishing to CI workflow
+- Add doc target using Action Docs
 
 ### Changed
 - Shift dependency management to pip-tools
