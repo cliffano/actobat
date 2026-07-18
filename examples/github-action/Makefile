@@ -4,7 +4,7 @@
 ################################################################
 
 # Actobat's version number
-ACTOBAT_VERSION = 0.11.1-pre.0
+ACTOBAT_VERSION = 0.11.0
 
 ################################################################
 # User configuration variables
@@ -133,8 +133,7 @@ deps:
 
 deps-upgrade:
 	python3 -m venv .venv
-	$(call python_venv,python3 -m pip install -r requirements-dev.txt)
-	$(call python_venv,pip-compile --upgrade)
+	$(call python_venv,python3 -m pip install --upgrade -r requirements.txt)
 
 deps-extra-apt:
 	apt-get update
@@ -161,7 +160,7 @@ update-dotfiles: stage
 # Update partial snippets using the generator-github-action
 $(eval $(call set_generator_vars,update-partials,actobat))
 update-partials: stage
-	$(call update_partials_from_generator,github-action,AVATAR BADGES DEVELOPERS_GUIDE BUILD_REPORTS)
+	$(call update_partials_from_generator,github-action,AVATAR BADGES)
 
 lint:
 	mkdir -p docs/lint/
