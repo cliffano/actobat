@@ -60,9 +60,14 @@ jobs:
 ## Colophon
 
 <!-- BEGIN:DEVELOPERS_GUIDE -->
-To be populated by generator-github-action github-action-partials
+[Developer's Guide](https://gepeto.github.io/developers-guide-github-action.html)
 <!-- END:DEVELOPERS_GUIDE -->
 
 <!-- BEGIN:BUILD_REPORTS -->
-To be populated by generator-github-action github-action-partials
+Build reports:
+
+* [Lint report](https://gepeto.github.io/actobatexample/lint/yamllint.txt)
+* [Test report](https://gepeto.github.io/actobatexample/test/act.txt)
+* [API documentation](https://gepeto.github.io/actobatexample/doc/action-docs/index.html)
+
 <!-- END:BUILD_REPORTS -->
