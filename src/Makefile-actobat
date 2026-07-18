@@ -197,7 +197,7 @@ release: release-minor
 doc: stage
 	rm -rf docs/doc/action-doc/ stage/doc/action-doc/
 	mkdir -p docs/doc/action-doc/ stage/doc/action-doc/
-	action-docs --source action.yml --output stage/doc/action-doc.md
-	$(call python_venv,markdown-docs --source stage/doc/doc.md --output docs/doc/action-doc/index.html)
+	action-docs --source action.yml > stage/doc/action-doc.md
+	$(call python_venv,python3 -m markdown stage/doc/action-doc.md > docs/doc/action-doc/index.html)
 
 .PHONY: $(1) all ci stage clean rmdeps deps deps-upgrade deps-extra-apt update-to-latest update-to-main update-to-version update-dotfiles update-partials lint test doc release-major release-minor release-patch release
