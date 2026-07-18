@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add DEVELOPERS_GUIDE and BUILD_REPORTS markers
 - Add build reports publishing to CI workflow
 
+### Changed
+- Shift dependency management to pip-tools
+
 ## 0.11.0 - 2026-07-17
 ### Changed
 - Shift version setting to action.yml as custom property
