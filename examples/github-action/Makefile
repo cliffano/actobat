@@ -112,7 +112,7 @@ endef
 
 # CI target to be executed by CI/CD tool
 all: ci
-ci: clean lint test docs
+ci: clean lint test doc
 
 # Ensure stage directory exists
 stage:
