@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- Add update-examples capability.
 - Re-add release targets as part of MAKEITSO
 
 ### Changed
